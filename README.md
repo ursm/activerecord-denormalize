@@ -20,6 +20,8 @@ Or install it yourself as:
 
 ``` ruby
 class Message < ActiveRecord::Base
+  # sender_type:string, sender_id:integer, _sender:hstore
+
   belongs_to :sender, polymorphic: true
 end
 
