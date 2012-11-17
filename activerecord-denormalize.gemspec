@@ -10,8 +10,8 @@ Gem::Specification.new do |gem|
   gem.version       = ActiveRecord::Denormalize::VERSION
   gem.authors       = ['Keita Urashima']
   gem.email         = ['ursm@ursm.jp']
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{Denormalize fields in ActiveRecord.}
+  gem.summary       = %q{}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)
