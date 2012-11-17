@@ -7,6 +7,8 @@ module ActiveRecord::Denormalize
     end
 
     def extract_attributes(obj, keys)
+      return {} unless obj
+
       keys.each_with_object({}) {|key, hash|
         case key
         when Hash
