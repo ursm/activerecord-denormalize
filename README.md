@@ -33,20 +33,12 @@ class User < ActiveRecord::Base
   }
 end
 
-class Bot < ActiveRecord::Base
-  # name:string
-
-  has_many :messages, as: :sender, denormalize: {
-    attributes: [:name]
-  }
-end
-
 user    = User.create!(name: 'foo')
 message = Message.create!(sender: user)
 
 message.sender_name #=> 'foo'
 
-user.update_attribute 'name', 'bar'
+user.update_attribute :name, 'bar'
 
 message.reload
 message.sender_name #=> 'bar'
