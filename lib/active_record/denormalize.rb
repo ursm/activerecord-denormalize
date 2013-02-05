@@ -1,4 +1,4 @@
-require 'activerecord-postgres-hstore'
+require 'activerecord-postgres-hstore/coder'
 
 module ActiveRecord::Denormalize
   class << self
@@ -52,7 +52,7 @@ module ActiveRecord::Denormalize
     mixin.redefine_method method_name do
       attrs = ActiveRecord::Denormalize.extract_attributes(self, attributes)
 
-      __send__(dest_name).update_all ["#{store_in} = ?::hstore", attrs.to_hstore]
+      __send__(dest_name).update_all ["#{store_in} = ?::hstore", ActiveRecord::Coders::Hstore.dump(attrs)]
     end
 
     model.after_save method_name
