@@ -3,7 +3,8 @@ require 'activerecord-postgres-hstore/coder'
 module ActiveRecord::Denormalize
   class << self
     def included(builder)
-      builder.valid_options << :denormalize
+      # Support for ActiveRecord 3.2
+      builder.valid_options << :denormalize if builder.valid_options
     end
 
     def extract_attributes(obj, keys)
@@ -26,6 +27,11 @@ module ActiveRecord::Denormalize
     super.tap {|reflection|
       configure_denormalize reflection
     }
+  end
+
+  # Support for ActiveRecord 4
+  def valid_options
+    super + [:denormalize]
   end
 
   private
