@@ -49,6 +49,12 @@ Message.all.each do |msg|
 end
 ```
 
+## Running the test
+
+``` sh
+$ bundle exec rake appraisal spec
+```
+
 ## Contributing
 
 1. Fork it
